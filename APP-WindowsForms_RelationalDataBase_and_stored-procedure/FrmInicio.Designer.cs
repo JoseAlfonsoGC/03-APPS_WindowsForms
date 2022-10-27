@@ -31,7 +31,7 @@ namespace APP_WindowsForms_RelationalDataBase_and_stored_procedure
         {
             System.ComponentModel.ComponentResourceManager resources = new System.ComponentModel.ComponentResourceManager(typeof(FrmInicio));
             this.menuStrip1 = new System.Windows.Forms.MenuStrip();
-            this.inicioTS = new System.Windows.Forms.ToolStripMenuItem();
+            this.administracionTS = new System.Windows.Forms.ToolStripMenuItem();
             this.sociosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.empleadosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
             this.usuariosToolStripMenuItem = new System.Windows.Forms.ToolStripMenuItem();
@@ -54,7 +54,7 @@ namespace APP_WindowsForms_RelationalDataBase_and_stored_procedure
             // menuStrip1
             // 
             this.menuStrip1.Items.AddRange(new System.Windows.Forms.ToolStripItem[] {
-            this.inicioTS,
+            this.administracionTS,
             this.serviciosTS,
             this.mantenimientoTS,
             this.clientesTS});
@@ -65,36 +65,37 @@ namespace APP_WindowsForms_RelationalDataBase_and_stored_procedure
             this.menuStrip1.TabIndex = 0;
             this.menuStrip1.Text = "menuStrip1";
             // 
-            // inicioTS
+            // administracionTS
             // 
-            this.inicioTS.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
+            this.administracionTS.DropDownItems.AddRange(new System.Windows.Forms.ToolStripItem[] {
             this.sociosToolStripMenuItem,
             this.empleadosToolStripMenuItem,
             this.usuariosToolStripMenuItem});
-            this.inicioTS.Name = "inicioTS";
-            this.inicioTS.Size = new System.Drawing.Size(48, 20);
-            this.inicioTS.Text = "Inicio";
+            this.administracionTS.Name = "administracionTS";
+            this.administracionTS.Size = new System.Drawing.Size(48, 20);
+            this.administracionTS.Text = "Inicio";
             // 
             // sociosToolStripMenuItem
             // 
             this.sociosToolStripMenuItem.Name = "sociosToolStripMenuItem";
-            this.sociosToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.sociosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.sociosToolStripMenuItem.Tag = "1";
             this.sociosToolStripMenuItem.Text = "Socios";
             // 
             // empleadosToolStripMenuItem
             // 
             this.empleadosToolStripMenuItem.Name = "empleadosToolStripMenuItem";
-            this.empleadosToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.empleadosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.empleadosToolStripMenuItem.Tag = "2";
             this.empleadosToolStripMenuItem.Text = "Empleados";
             // 
             // usuariosToolStripMenuItem
             // 
             this.usuariosToolStripMenuItem.Name = "usuariosToolStripMenuItem";
-            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(132, 22);
+            this.usuariosToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.usuariosToolStripMenuItem.Tag = "3";
             this.usuariosToolStripMenuItem.Text = "Usuarios";
+            this.usuariosToolStripMenuItem.Click += new System.EventHandler(this.usuariosToolStripMenuItem_Click);
             // 
             // serviciosTS
             // 
@@ -109,21 +110,21 @@ namespace APP_WindowsForms_RelationalDataBase_and_stored_procedure
             // pesasToolStripMenuItem
             // 
             this.pesasToolStripMenuItem.Name = "pesasToolStripMenuItem";
-            this.pesasToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.pesasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.pesasToolStripMenuItem.Tag = "4";
             this.pesasToolStripMenuItem.Text = "Pesas";
             // 
             // spinningToolStripMenuItem
             // 
             this.spinningToolStripMenuItem.Name = "spinningToolStripMenuItem";
-            this.spinningToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.spinningToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.spinningToolStripMenuItem.Tag = "5";
             this.spinningToolStripMenuItem.Text = "Spinning";
             // 
             // pilatesToolStripMenuItem
             // 
             this.pilatesToolStripMenuItem.Name = "pilatesToolStripMenuItem";
-            this.pilatesToolStripMenuItem.Size = new System.Drawing.Size(121, 22);
+            this.pilatesToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.pilatesToolStripMenuItem.Tag = "6";
             this.pilatesToolStripMenuItem.Text = "Pilates";
             // 
@@ -142,30 +143,31 @@ namespace APP_WindowsForms_RelationalDataBase_and_stored_procedure
             // serviciosToolStripMenuItem1
             // 
             this.serviciosToolStripMenuItem1.Name = "serviciosToolStripMenuItem1";
-            this.serviciosToolStripMenuItem1.Size = new System.Drawing.Size(138, 22);
+            this.serviciosToolStripMenuItem1.Size = new System.Drawing.Size(180, 22);
             this.serviciosToolStripMenuItem1.Tag = "7";
             this.serviciosToolStripMenuItem1.Text = "Servicios";
             // 
             // membresiasToolStripMenuItem
             // 
             this.membresiasToolStripMenuItem.Name = "membresiasToolStripMenuItem";
-            this.membresiasToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.membresiasToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.membresiasToolStripMenuItem.Tag = "8";
             this.membresiasToolStripMenuItem.Text = "Membresias";
             // 
             // lockerToolStripMenuItem
             // 
             this.lockerToolStripMenuItem.Name = "lockerToolStripMenuItem";
-            this.lockerToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.lockerToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.lockerToolStripMenuItem.Tag = "9";
             this.lockerToolStripMenuItem.Text = "Locker";
             // 
             // rolUsuarioToolStripMenuItem
             // 
             this.rolUsuarioToolStripMenuItem.Name = "rolUsuarioToolStripMenuItem";
-            this.rolUsuarioToolStripMenuItem.Size = new System.Drawing.Size(138, 22);
+            this.rolUsuarioToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.rolUsuarioToolStripMenuItem.Tag = "10";
             this.rolUsuarioToolStripMenuItem.Text = "Rol Usuario";
+            this.rolUsuarioToolStripMenuItem.Click += new System.EventHandler(this.rolUsuarioToolStripMenuItem_Click);
             // 
             // clientesTS
             // 
@@ -180,21 +182,21 @@ namespace APP_WindowsForms_RelationalDataBase_and_stored_procedure
             // altaToolStripMenuItem
             // 
             this.altaToolStripMenuItem.Name = "altaToolStripMenuItem";
-            this.altaToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.altaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.altaToolStripMenuItem.Tag = "11";
             this.altaToolStripMenuItem.Text = "Alta";
             // 
             // bajaToolStripMenuItem
             // 
             this.bajaToolStripMenuItem.Name = "bajaToolStripMenuItem";
-            this.bajaToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.bajaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.bajaToolStripMenuItem.Tag = "12";
             this.bajaToolStripMenuItem.Text = "Baja";
             // 
             // ventaToolStripMenuItem
             // 
             this.ventaToolStripMenuItem.Name = "ventaToolStripMenuItem";
-            this.ventaToolStripMenuItem.Size = new System.Drawing.Size(103, 22);
+            this.ventaToolStripMenuItem.Size = new System.Drawing.Size(180, 22);
             this.ventaToolStripMenuItem.Tag = "13";
             this.ventaToolStripMenuItem.Text = "Venta";
             // 
@@ -209,6 +211,8 @@ namespace APP_WindowsForms_RelationalDataBase_and_stored_procedure
             this.MainMenuStrip = this.menuStrip1;
             this.Name = "FrmInicio";
             this.Text = "Menu Inicio";
+            this.FormClosing += new System.Windows.Forms.FormClosingEventHandler(this.FrmInicio_FormClosing);
+            this.Load += new System.EventHandler(this.FrmInicio_Load);
             this.menuStrip1.ResumeLayout(false);
             this.menuStrip1.PerformLayout();
             this.ResumeLayout(false);
@@ -219,7 +223,7 @@ namespace APP_WindowsForms_RelationalDataBase_and_stored_procedure
         #endregion
 
         private System.Windows.Forms.MenuStrip menuStrip1;
-        private System.Windows.Forms.ToolStripMenuItem inicioTS;
+        private System.Windows.Forms.ToolStripMenuItem administracionTS;
         private System.Windows.Forms.ToolStripMenuItem sociosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem empleadosToolStripMenuItem;
         private System.Windows.Forms.ToolStripMenuItem usuariosToolStripMenuItem;

@@ -47,7 +47,6 @@ namespace APP_WindowsForms_RelationalDataBase_and_stored_procedure
             this.label1.Size = new System.Drawing.Size(99, 13);
             this.label1.TabIndex = 0;
             this.label1.Text = "Nombre usuario:";
-            this.label1.Click += new System.EventHandler(this.label1_Click);
             // 
             // txtUsuario
             // 
@@ -97,6 +96,7 @@ namespace APP_WindowsForms_RelationalDataBase_and_stored_procedure
             this.btnGuardar.TabIndex = 6;
             this.btnGuardar.Text = "Guardar";
             this.btnGuardar.UseVisualStyleBackColor = true;
+            this.btnGuardar.Click += new System.EventHandler(this.btnGuardar_Click);
             // 
             // FrmUsuario
             // 
@@ -114,6 +114,7 @@ namespace APP_WindowsForms_RelationalDataBase_and_stored_procedure
             this.Icon = ((System.Drawing.Icon)(resources.GetObject("$this.Icon")));
             this.Name = "FrmUsuario";
             this.Text = "Registrar usuario";
+            this.Load += new System.EventHandler(this.FrmUsuario_Load);
             this.ResumeLayout(false);
             this.PerformLayout();
 

@@ -1,0 +1,177 @@
+create database dbtest
+--use dbtest
+go
+use dbtest
+
+--drop table usuario
+
+
+
+create table usuario(
+		id int identity(1,1),
+		nombre varchar(60),
+		passwordd varchar(60),
+		rolid int not null
+		primary key(id)
+	);
+
+alter table usuario 
+		add constraint fk_usuario_rol foreign key(rolid) references rol (id);
+
+alter table usuario drop constraint fk_usuario_rol
+
+create table rol(
+		id int identity(1,1),
+		nombre varchar(60)not null,
+		primary key(id)
+	);
+
+create table permiso(
+		id int identity(1,1),
+		rolUsuarioid int not null,--foreign key de la tabla rol
+		opcionid int not null,--foreign key
+		permitido bit not null
+		primary key(id)
+	);
+
+alter table permiso 
+		add constraint fk_permiso_rol foreign key(rolUsuarioid) references rol (id);
+
+alter table permiso drop constraint fk_permiso_rol
+
+alter table permiso 
+		add constraint fk_permiso_opcion foreign key(opcionid) references opcion (id);
+
+alter table permiso drop constraint fk_permiso_opcion
+
+create table opcion(
+		id int identity(1,1),
+		nombre varchar(60)not null,
+		moduloid int not null
+		primary key(id)
+	);
+
+alter table opcion 
+		add constraint fk_opcion_modulo foreign key(moduloid) references modulo (id);
+
+alter table opcion drop constraint fk_opcion_modulo
+
+create table modulo(
+		id int identity(1,1),
+		nombre varchar(60) not null,
+		primary key(id)
+);
+
+drop table modulo
+
+--para hacer mas sencillo el desarollo de esta ap algunos registros se hicieron desde el Query
+
+--para comunicar la interfaz con el modelo podemos hacer uso de tablas y los tag que identifican las herramientas de WindowsForm
+insert into modulo(nombre)values('ADMINISTRACIÓN');
+insert into modulo(nombre)values('SERVICIOS');
+insert into modulo(nombre)values('MANTENIMIENTO');
+insert into modulo(nombre)values('CLIENTES');
+
+insert into opcion(nombre, moduloid) values('SOCIOS',1);
+insert into opcion(nombre, moduloid) values('EMPLEADOS',1);
+insert into opcion(nombre, moduloid) values('USUARIOS',1);
+insert into opcion(nombre, moduloid) values('PESAS',2);
+insert into opcion(nombre, moduloid) values('SPINNING',2);
+insert into opcion(nombre, moduloid) values('PILATES',2);
+insert into opcion(nombre, moduloid) values('SERVICIOS',3);
+insert into opcion(nombre, moduloid) values('MEMBRESIAS',3);
+insert into opcion(nombre, moduloid) values('LOCKER',3);
+insert into opcion(nombre, moduloid) values('ROL USUARIO',3);
+insert into opcion(nombre, moduloid) values('ALTA',4);
+insert into opcion(nombre, moduloid) values('BAJA',4);
+insert into opcion(nombre, moduloid) values('VENTA',4);
+
+--Roles visibles a los usuario dependiendo de restricciones, se ingresan en la ap
+insert into rol(nombre)values('ADMINISTRACIÓN')
+insert into rol(nombre)values('CLIENTES')
+
+create procedure spguardar_rol
+@nombre varchar(60),
+@id int output
+as 
+	begin 
+		set nocount on;
+			begin 
+				insert into rol(nombre)
+				values(@nombre)
+				select @id=scope_identity()
+			end 
+	end
+
+create procedure spGuardarPermiso
+@rolusuarioid int,
+@opcionid int,
+@permitido bit
+as
+	begin
+		set nocount on;
+			begin
+				insert into permiso(rolUsuarioid,opcionid,permitido)
+				values(@rolusuarioid,@opcionid,@permitido)
+			end
+	end
+
+
+create procedure spComboRol
+as
+	BEGIN
+		set nocount on;
+			Begin
+				select * from rol
+			end
+	END
+
+create procedure spGuardarUsuario
+@nombre varchar(60),
+@passwordd varchar(60),
+@rolid int
+as
+	BEGIN
+		set nocount on;
+			Begin
+				insert into usuario(nombre,passwordd,rolid)
+				values(@nombre,@passwordd,@rolid)
+			End
+	END
+
+create procedure spBuscarUsuario
+@nombre varchar(60),
+@passwordd varchar(60),
+@idUsuario int OUTPUT
+as 
+	BEGIN
+		set nocount on;
+		Begin
+			if exists(select * from usuario where nombre=@nombre and passwordd=@passwordd)--si encuentra el registro
+
+					  select @idUsuario=(select id from usuario where nombre=@nombre and passwordd=@passwordd)--lo regresa
+				else
+					  select @idUsuario=0
+		End
+	END
+
+create procedure spSelectOpcion
+@idRol int 
+as
+	BEGIN
+		set nocount on;
+			Begin
+				select * from permiso
+				where rolUsuarioid=@idRol
+			End
+	END
+
+ --insertar un rogistro de prueba a la integridad de las tablas y relaciones
+insert into usuario(nombre,passwordd,rolid) values('chule','123',2);
+
+insert into rol(nombre)values('Clientes');
+--como checar que un procedimiento almacenado funciona bien
+exec spGuardarUsuario
+	@nombre ='DianaLT',
+	@passwordd='123',
+	@rolid=1;

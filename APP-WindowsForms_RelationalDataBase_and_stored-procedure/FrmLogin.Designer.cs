@@ -77,6 +77,7 @@ namespace APP_WindowsForms_RelationalDataBase_and_stored_procedure
             this.btnAcceder.TabIndex = 4;
             this.btnAcceder.Text = "Acceder";
             this.btnAcceder.UseVisualStyleBackColor = true;
+            this.btnAcceder.Click += new System.EventHandler(this.btnAcceder_Click);
             // 
             // FrmLogin
             // 

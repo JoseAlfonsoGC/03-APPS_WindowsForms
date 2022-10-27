@@ -16,7 +16,7 @@ namespace APP_WindowsForms_RelationalDataBase_and_stored_procedure
         {
             Application.EnableVisualStyles();
             Application.SetCompatibleTextRenderingDefault(false);
-            Application.Run(new FrmInicio());
+            Application.Run(new FrmLogin());
         }
     }
 }
